@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100&display=swap');
+
+
+h1 {
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 50px;
+    transition: font-size 0.5s;
+}
+
+h2 {
+    font-family: 'Spartan', sans-serif;
+    font-size: 72px;
+    text-align: center;
+    transition: font-size 1s;
+}
+
+table {
+    border: 5px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th {
+    padding: 20px;
+}
+
+li {
+    list-style-type: none;
+}
+
+h1:hover{
+    font-size: 55px;
+    transition: font-size 0.5s;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
