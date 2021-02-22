@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100&display=swap');
 
+body {
+    background-color: #1f1f1f;
+}
+
 
 h1 {
     text-align: center;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 50px;
     transition: font-size 0.5s;
+    color: white;
 }
 
 h2 {
@@ -14,10 +19,12 @@ h2 {
     font-size: 72px;
     text-align: center;
     transition: font-size 1s;
+    color: white;
+    animation-name: titleAnimation;
 }
 
 table {
-    border: 5px solid black;
+    border: 5px solid white;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -38,5 +45,5 @@ h1:hover{
 
 a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
