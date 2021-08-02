@@ -62,5 +62,22 @@ button:hover {
     font-size: 30px;
     transition: font-size 0.5s;
     color: white;
-    margin: none
+    margin: none;
+    vertical-align:text-bottom;
+}
+
+.container li {
+    list-style-type: circle;
+    text-align: left;
+    position: relative;
+    left: 50%;
+    transform: translate(-20%, 0);
+    margin: 10px;
+    font-size: 30px;
+    transition: font-size 0.2s;
+}
+
+.container li:hover {
+    font-size: 35px;
+    transition: font-size 0.2s;
 }
