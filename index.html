@@ -9,29 +9,44 @@
     </a>
 </head>
 <body>
-<table>
-    <th>
-        <ul>
-            <li><h1>
-                <a href = "./projects.html">Project Ideas</a>
-            </h1></li>
-        </ul>
-    </th>
-    <th>
-        <ul>
-            <li><h1>
-                <a href = "./projects.html">Work in process</a>
-            </h1></li>
-        </ul>
-    </th>
-    <th>
-        <ul>
-            <li><h1>
-                <a href = "./projects.html">Finished projects</a>
-            </h1></li>
-        </ul>
-    </th>
-</table>
-<div class = "preview">[This is where the preview is]</div>
+    <table>
+        <th>
+            <ul>
+                <li>
+                    <button title = "ideas" onclick = "showDiv(this.title)">PROJECT IDEAS</button>
+                </li>
+            </ul>
+        </th>
+        <th>
+            <ul>
+                <li>
+                    <button title = "wip" onclick = "showDiv(this.title)">WORK IN PROGRESS</button>
+                </li>
+            </ul>
+        </th>
+        <th>
+            <ul>
+                <li>
+                    <button title = "finished" onclick = "showDiv(this.title)">FINISHED PROJECTS</button>
+                </li>
+            </ul>
+        </th>
+    </table>
+
+    <div id = "ideas" class = "container">
+        Ideas
+    </div>
+    <div id = "wip" class = "container">
+        <table>
+            <th>
+            <a href = "https://github.com/TobyD02/javascript-physics-engine">Physics Engine</a>
+            </th>
+        </table>
+    </div>
+    <div id = "finished" class = "container">
+        Finsihed
+    </div>
+
+    <script src = "javascript.js"></script>
 </body>
 </html>
