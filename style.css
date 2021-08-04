@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
 body {
     background-color: #1f1f1f;
@@ -53,31 +54,49 @@ button:hover {
 .container {
     display: none;
     margin: auto;
-    width: 50%;
-    padding: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
     text-align: center;
     color: white;
+    transition: color 0.2s;
     text-align: center;
-    font-family: 'Josefin Sans', sans-serif;
     font-size: 30px;
-    transition: font-size 0.5s;
-    color: white;
     margin: none;
     vertical-align:text-bottom;
 }
 
-.container li {
+.container td {
     list-style-type: circle;
-    text-align: left;
-    position: relative;
-    left: 50%;
-    transform: translate(-20%, 0);
-    margin: 10px;
-    font-size: 30px;
-    transition: font-size 0.2s;
+    text-align: center;
+    border-style: solid;
+    display: inline block;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    background-size: contain;
+    vertical-align: top;
+    width: 300px;
+    height: 300px;
 }
 
-.container li:hover {
-    font-size: 35px;
-    transition: font-size 0.2s;
+.container td:hover {
+    opacity: 1;
+    transition: opacity 0.2s;
+    cursor:pointer;
+}
+
+.container table {
+    border-spacing: 10px;
+    border-collapse: separate;
+    table-layout: fixed;
+    width: 900px;
+}
+
+.container a {
+    font-size: 20px;
+    background-color: black;
+    display: block;
+    padding: 5px;
+    font-family: 'Noto Sans JP', sans-serif;
+    width: 100;
 }
