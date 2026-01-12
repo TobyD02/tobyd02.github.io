@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-01-12T22:34:45+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Toby Dixon</title><subtitle>Hi - my name is Toby. Follow my &quot;Year of Code&quot; where I complete 1 project every week for a year.</subtitle><entry><title type="html">Year of Code!</title><link href="http://localhost:4000/yearofcode/2026/01/12/yearofcode.html" rel="alternate" type="text/html" title="Year of Code!" /><published>2026-01-12T20:24:43+00:00</published><updated>2026-01-12T20:24:43+00:00</updated><id>http://localhost:4000/yearofcode/2026/01/12/yearofcode</id><content type="html" xml:base="http://localhost:4000/yearofcode/2026/01/12/yearofcode.html"><![CDATA[<p>This year, I’ve decided to commit to what I’m calling a “Year of Code”. Each week I will pick a new project topic and
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="tobyd02.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="tobyd02.github.io/" rel="alternate" type="text/html" /><updated>2026-01-12T22:59:30+00:00</updated><id>tobyd02.github.io/feed.xml</id><title type="html">Toby Dixon</title><subtitle>Hi - my name is Toby. Follow my &quot;Year of Code&quot; where I complete 1 project every week for a year.</subtitle><entry><title type="html">Year of Code!</title><link href="tobyd02.github.io/yearofcode/2026/01/12/yearofcode.html" rel="alternate" type="text/html" title="Year of Code!" /><published>2026-01-12T20:24:43+00:00</published><updated>2026-01-12T20:24:43+00:00</updated><id>tobyd02.github.io/yearofcode/2026/01/12/yearofcode</id><content type="html" xml:base="tobyd02.github.io/yearofcode/2026/01/12/yearofcode.html"><![CDATA[<p>This year, I’ve decided to commit to what I’m calling a “Year of Code”. Each week I will pick a new project topic and
 attempt to build some MVP by the end of the week - documenting everything here. I haven’t quite ironed out the details
 yet, so this is very much a “figure it out as I go along” kind of project.</p>
 
@@ -40,6 +40,11 @@ prompt is broad enough, I can allow my ideas to lead my development as they come
     <ul>
       <li>Visualising different algorithms (e.g. Fractals, Voronoi, etc…) using both 2D (P5.js) and 3D (Blender)
 libraries.</li>
+    </ul>
+  </li>
+  <li><strong>Productivity</strong>:
+    <ul>
+      <li>A project management / todo tracking app - potentially integrating with GitHub to track across branches</li>
     </ul>
   </li>
 </ul>]]></content><author><name></name></author><category term="YearOfCode" /><summary type="html"><![CDATA[This year, I’ve decided to commit to what I’m calling a “Year of Code”. Each week I will pick a new project topic and attempt to build some MVP by the end of the week - documenting everything here. I haven’t quite ironed out the details yet, so this is very much a “figure it out as I go along” kind of project.]]></summary></entry></feed>
