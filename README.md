@@ -6,12 +6,12 @@ install jekyll
 sudo apt install jekyll
 ```
 
-serve:
+serve (for development):
 ```shell
-jekyll serve --destination tobyd02.github.io
+jekyll serve
 ```
 
-and when ready... build:
+and when ready to push changes... build:
 ```shell
 jekyll build --destination tobyd02.github.io
 ```
