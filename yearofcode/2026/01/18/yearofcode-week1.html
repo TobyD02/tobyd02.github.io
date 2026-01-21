@@ -62,38 +62,75 @@ of how a particular component works, you end up depending on AI to add features,
 
 <h3 id="the-project">The Project</h3>
 
-<p>For my first project of the year, I thought it would be fitting to start off with a “Project Tracker” (or “To-Do” list).
-I didn’t want it to just be the same old To-Do list on every developer’s GitHub, it needs something different. I decided
-it would be cool if I could connect my repositories directly to the project tracker, extracting todos directly from the
-codebase. This would also allow me to track different TODOs on different branches of the same repository. I also thought
-this would be a good opportunity to learn
-about <a href="https://docs.celeryq.dev/en/main/getting-started/introduction.html">Celery</a>, something I’d heard about but never
-really explored.</p>
+<h4 id="day-1">Day 1</h4>
 
-<p>There would be two components to this project (though I’d only start on one for this first week):</p>
+<p>I started off rather reluctantly, trying to scrape together some idea. I’ve developed simple TODO apps before, so I
+decided that it might be an easy way to get started. I started with research - looking into the different ways I could
+pull the data I wanted from the repositories. Naturally, I stumbled across the GitHub API, which seemed like a perfect
+fit - you can view commit trees, monitor events, etc… I set up my project environment, Docker images, and GitHub
+authentication and began playing around with some ideas.</p>
 
-<ol>
-  <li>A backend, Celery oriented, system that runs workers to clone and parse repositories for TODOs - adding (or updating)
-the records in Postgres.
-    <ul>
-      <li>At the moment I have Celery connected to a Redis instance to use for event queues.</li>
-    </ul>
-  </li>
-  <li>A frontend that allows for uploading of repository URLs. This will initiate the first celery task (and subsequently
-all updating tasks).</li>
-</ol>
+<p>I rather quickly hit the limits with the GitHub API - web requests have an inherent latency tied to them, which only
+compounds with paginated responses. For a large repo (I was using <a href="https://github.com/facebook/react">Facebook/React</a> to
+test), It was taking upwards of 10 minutes to iterate through all the pages. For this reason, I started looking towards
+what felt like a bit more of a <strong><em>hacky</em></strong> solution - cloning the repository and using shell commands to find what I
+was looking for. By the end of the day, the only code I had written was some sloppy AI script which would:</p>
 
-<h2 id="next-steps">Next Steps</h2>
+<ul>
+  <li>Clone a repo</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">git grep</code> to find all the files containing todos</li>
+  <li>Store all the todos in an array and print it out</li>
+</ul>
 
-<p>Obviously - building the frontend. I’m interested in trying out <a href="https://nicegui.io/">NiceGUI</a> as an alternative to all
-the JS/TS frameworks. Also - just extracting TODO’s from a repo isn’t that useful, so i’d like to allow some extra kinds
-of documentation - having some canvas where you can sketch out architecture diagrams, or throwaway notes, etc… Notes
-that are useful for the developer but shouldn’t necessarily be in the codebase. These should be scoped, so they can
-either be viewed in the context of the entire repo, or just a single branch. Also I think it would be cool if each found
-todo had a hyperlink to the relevant line in the codebase.</p>
+<h4 id="day-2">Day 2</h4>
 
-<p>I’m undecided as to whether I’ll continue with this project into next week, or whether I’ll move onto something a bit
-more digestible.</p>
+<p>For the second day, I decided to avoid programming since I was already drained from working - instead I focused on
+getting the backend systems running and communicating. The architecture I decided on was as follows:</p>
+
+<ul>
+  <li>A python worker (using celery) for initial scraping of repositories, and intermittent monitoring of tracked
+repository - checking for new commits on any branches.</li>
+  <li>Redis (streams) for handling the queueing of tasks</li>
+  <li>Some SQL database for storing the data (likely Postgres)</li>
+  <li>A simple FastAPI application for serving the data.</li>
+</ul>
+
+<p>Initially, I wanted to use sqlite for the database; since the frontend would be readonly, there would be no race
+conditions with the celery workers. However, this would limit me to a single worker - besides using a database engine
+such as Postgres removes the worry of potentially migrating in the future (I also happen to be more familiar). As for
+the choice to use Redis streams over something like RabbitMQ - this was primarily due to the fact that redis is a
+very lightweight and easy to set up interactions with. I felt that a more feature-rich message broker such as RabbitMQ
+was unnecessary for such a simple application.</p>
+
+<h4 id="day-3">Day 3</h4>
+
+<p>I was feeling much more motivated by day 3, I started off by improving the repository todo extraction. The first thing I
+wanted to add was branch-aware todo tracking - this was fairly simple to set up, simply query the repository for a list
+of the branches, check out each one, and run <code class="language-plaintext highlighter-rouge">git grep</code>. Next was setting up some system for monitoring if any todos had
+been added or removed. To do this, I capture the commit hash of each branch when I initially scrape them - then, on any
+subsequent processes, I compare the current commit hash to the one I captured. If it is the same - ignore it, nothing
+has changed - otherwise (just for the sake of a quick MVP) I delete all the stored TODO’s for that branch and re-scrape
+them.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>This first week was a difficult one to get through, not necessarily because of the project itself (though it did feel a
+bit uninspired at times, which definitely didn’t help) - but my general lack of interest and motivation. I’m glad that I
+tried to push myself through it, because it really helped me to realise the flaws with my original plan for this
+<strong><em>Year of Code</em></strong>. Finishing a project a week is a tall order even if you dedicate all your time to it, so balancing
+that with work, exercise, a social life, etc… is really just not possible.</p>
+
+<p>Setting ambitious goals is good - but it can also be a bit overwhelming. I realised that the goal of “1 project per
+week” was setting myself up for failure. At most - I could reach that goal, but more often than not I would end up
+finishing the week with an unfinished prototype and a feeling of disappointment. This is why I changed it - having
+instead a goal of “1 finished project in the year” means I will more than likely surpass my goal. For a project like the
+Year of Code - where the goal is to encourage myself - I think this is a much better target. I won’t lose interest
+because I’m coming home tired and forcing myself to work every day, instead I’ll put in the time to finish projects I’m
+passionate about when I have ideas.</p>
+
+<p>I’m undecided as to whether I’ll continue with this project - I think it’s a solid idea; the potential is there. But
+ currently, it’s just not that interesting to me. I’d like to explore less functional project ideas, ones that are purely
+creative endeavours, and then hopefully that will spark some functional ideas that I can start working on.</p>
 
   </div><a class="u-url" href="/yearofcode/2026/01/18/yearofcode-week1.html" hidden></a>
 </article>
